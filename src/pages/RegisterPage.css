@@ -1,0 +1,91 @@
+/* Estilos generales para la página de registro */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f4f4f4;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Sección Hero para la página de registro */
+  .register-hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #ff9800, #e68900);
+    color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+  
+  .register-hero h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .register-hero p {
+    font-size: 1.2rem;
+  }
+  
+  /* Tarjeta que contiene el formulario de registro */
+  .register-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Estilos para el formulario */
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .register-form label {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  .register-form input:focus {
+    border-color: #ff9800;
+    outline: none;
+  }
+  
+  .register-form button {
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .register-form button:hover {
+    background-color: #333;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 480px) {
+    .register-hero h2 {
+      font-size: 1.5rem;
+    }
+    .register-hero p {
+      font-size: 1rem;
+    }
+  }
+  

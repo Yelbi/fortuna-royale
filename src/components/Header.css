@@ -1,0 +1,117 @@
+/* Estilos generales del header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 100;
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* Navegación */
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Enlaces de navegación y botones de autenticación */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover {
+    color: #ff9800;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+  }
+  
+  .auth-buttons .btn {
+    background-color: #ff9800;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .auth-buttons .btn:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+  }
+  
+  /* Menú Hamburguesa (solo se muestra en pantallas pequeñas) */
+  .hamburguesa {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .hamburguesa .linea {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: transform 0.3s;
+  }
+  
+  /* Responsividad para dispositivos móviles */
+  @media (max-width: 768px) {
+    .nav {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #1e1e1e;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 200px;
+      padding: 10px;
+      border-radius: 5px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    
+    .nav.activo {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .auth-buttons {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      margin-left: 0;
+    }
+    
+    .hamburguesa {
+      display: flex;
+    }
+  }
+  
