@@ -1,7 +1,6 @@
 .hero {
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-md);
-    border-radius: var(--border-radius-md);
     margin-bottom: var(--spacing-xl);
     color: var(--text-light);
     position: relative;
