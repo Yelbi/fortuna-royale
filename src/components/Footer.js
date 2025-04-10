@@ -31,13 +31,13 @@ const Footer = () => {
             <p>Teléfono: +123 456 7890</p>
             <div className="social-media">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <i className="fa fa-facebook"></i>
+                <i className="fab fa-facebook-f"></i>
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <i className="fa fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="fa fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
               </a>
             </div>
           </div>
