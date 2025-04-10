@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Hero from '../components/common/Hero';
 import GameCard from '../components/common/GameCard';
 import SectionHeading from '../components/common/SectionHeading';
+import SlotMachine from '../components/games/SlotMachine';
 import './CasinoPage.css';
 
 function CasinoPage() {
@@ -48,83 +49,123 @@ function CasinoPage() {
   // Estado para filtrar juegos por categoría
   const [categoriaActiva, setCategoriaActiva] = useState('todos');
   
+  // Estado para mostrar el juego activo
+  const [juegoActivo, setJuegoActivo] = useState(null);
+  
   // Filtrar juegos según la categoría seleccionada
   const juegosFiltrados = categoriaActiva === 'todos' 
     ? casinoJuegos 
     : casinoJuegos.filter(juego => juego.categoria === categoriaActiva);
 
+  // Manejar click en un juego
+  const handleJuegoClick = (juegoId) => {
+    // En una implementación real, aquí cargarías el juego correspondiente
+    // Para el ejemplo, simplemente mostraremos el Slot Machine si es tragamonedas
+    if (juegoId === 2 || juegoId === 4) {
+      setJuegoActivo('slot');
+    } else {
+      // Simular que otros juegos no están disponibles en el ejemplo
+      alert('Este juego estará disponible próximamente.');
+    }
+  };
+
+  // Volver a la lista de juegos
+  const volverAListaJuegos = () => {
+    setJuegoActivo(null);
+  };
+
   return (
     <div className="casino-page">
-      <Hero 
-        title="Descubre nuestros Juegos de Casino"
-        subtitle="Explora la mejor selección de juegos tradicionales y modernos en Fortuna Royale Casino."
-        background="primary"
-      />
-      
-      <div className="container">
-        <div className="categoria-filtros">
-          <button 
-            className={`filtro-btn ${categoriaActiva === 'todos' ? 'activo' : ''}`}
-            onClick={() => setCategoriaActiva('todos')}
-          >
-            Todos los Juegos
-          </button>
-          <button 
-            className={`filtro-btn ${categoriaActiva === 'mesa' ? 'activo' : ''}`}
-            onClick={() => setCategoriaActiva('mesa')}
-          >
-            Juegos de Mesa
-          </button>
-          <button 
-            className={`filtro-btn ${categoriaActiva === 'slots' ? 'activo' : ''}`}
-            onClick={() => setCategoriaActiva('slots')}
-          >
-            Tragamonedas
-          </button>
-          <button 
-            className={`filtro-btn ${categoriaActiva === 'poker' ? 'activo' : ''}`}
-            onClick={() => setCategoriaActiva('poker')}
-          >
-            Poker
-          </button>
-        </div>
-        
-        <section className="section fade-in">
-          <SectionHeading
-            title={`Juegos de Casino ${categoriaActiva !== 'todos' ? `- ${categoriaActiva.charAt(0).toUpperCase() + categoriaActiva.slice(1)}` : ''}`}
-            subtitle="Disfruta de la experiencia de un casino real desde la comodidad de tu hogar"
+      {!juegoActivo ? (
+        // Vista de lista de juegos
+        <>
+          <Hero 
+            title="Descubre nuestros Juegos de Casino"
+            subtitle="Explora la mejor selección de juegos tradicionales y modernos en Fortuna Royale Casino."
+            background="primary"
           />
           
-          {juegosFiltrados.length === 0 ? (
-            <div className="no-juegos">
-              <p>No se encontraron juegos en esta categoría.</p>
+          <div className="container">
+            <div className="categoria-filtros">
+              <button 
+                className={`filtro-btn ${categoriaActiva === 'todos' ? 'activo' : ''}`}
+                onClick={() => setCategoriaActiva('todos')}
+              >
+                Todos los Juegos
+              </button>
+              <button 
+                className={`filtro-btn ${categoriaActiva === 'mesa' ? 'activo' : ''}`}
+                onClick={() => setCategoriaActiva('mesa')}
+              >
+                Juegos de Mesa
+              </button>
+              <button 
+                className={`filtro-btn ${categoriaActiva === 'slots' ? 'activo' : ''}`}
+                onClick={() => setCategoriaActiva('slots')}
+              >
+                Tragamonedas
+              </button>
+              <button 
+                className={`filtro-btn ${categoriaActiva === 'poker' ? 'activo' : ''}`}
+                onClick={() => setCategoriaActiva('poker')}
+              >
+                Poker
+              </button>
             </div>
-          ) : (
-            <div className="cards-grid">
-              {juegosFiltrados.map(juego => (
-                <GameCard
-                  key={juego.id}
-                  title={juego.nombre}
-                  description={juego.descripcion}
-                  themeColor="primary"
-                  buttonText="Jugar Ahora"
-                  onButtonClick={() => console.log(`Jugando ${juego.nombre}`)}
-                />
-              ))}
+            
+            <section className="section fade-in">
+              <SectionHeading
+                title={`Juegos de Casino ${categoriaActiva !== 'todos' ? `- ${categoriaActiva.charAt(0).toUpperCase() + categoriaActiva.slice(1)}` : ''}`}
+                subtitle="Disfruta de la experiencia de un casino real desde la comodidad de tu hogar"
+              />
+              
+              {juegosFiltrados.length === 0 ? (
+                <div className="no-juegos">
+                  <p>No se encontraron juegos en esta categoría.</p>
+                </div>
+              ) : (
+                <div className="cards-grid">
+                  {juegosFiltrados.map(juego => (
+                    <GameCard
+                      key={juego.id}
+                      title={juego.nombre}
+                      description={juego.descripcion}
+                      themeColor="primary"
+                      buttonText="Jugar Ahora"
+                      onButtonClick={() => handleJuegoClick(juego.id)}
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+            
+            <section className="casino-promo fade-in">
+              <div className="promo-card">
+                <div className="promo-content">
+                  <h3>¡Torneo semanal de Blackjack!</h3>
+                  <p>Participa en nuestro torneo semanal de Blackjack y compite por un premio acumulado de $10,000</p>
+                  <button className="btn-primary">Más Información</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </>
+      ) : (
+        // Vista del juego seleccionado
+        <div className="container">
+          <div className="juego-activo-header">
+            <button className="btn-back" onClick={volverAListaJuegos}>
+              ← Volver a los juegos
+            </button>
+          </div>
+          
+          {juegoActivo === 'slot' && (
+            <div className="juego-slot-container">
+              <SlotMachine />
             </div>
           )}
-        </section>
-        
-        <section className="casino-promo fade-in">
-          <div className="promo-card">
-            <div className="promo-content">
-              <h3>¡Torneo semanal de Blackjack!</h3>
-              <p>Participa en nuestro torneo semanal de Blackjack y compite por un premio acumulado de $10,000</p>
-              <button className="btn-primary">Más Información</button>
-            </div>
-          </div>
-        </section>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

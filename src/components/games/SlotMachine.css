@@ -1,0 +1,285 @@
+.slot-machine {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    color: var(--white);
+  }
+  
+  .slot-machine h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Área de mensajes y ganancias */
+  .slot-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    min-height: 60px;
+  }
+  
+  .message-display {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+  }
+  
+  .win-display {
+    min-width: 100px;
+    text-align: center;
+  }
+  
+  .win-amount {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 700;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    display: inline-block;
+    animation: winPulse 0.5s ease infinite alternate;
+  }
+  
+  @keyframes winPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+  
+  /* Rodillos de la tragamonedas */
+  .slot-reels {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .reel {
+    flex: 1;
+    background: linear-gradient(to bottom, #444, #222);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-sm);
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .reel::before,
+  .reel::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 1;
+  }
+  
+  .reel::before {
+    top: 0;
+  }
+  
+  .reel::after {
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+  
+  .symbol {
+    font-size: 3rem;
+    transition: transform 0.1s ease;
+  }
+  
+  .reel.spinning .symbol {
+    animation: spin 0.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: translateY(-50px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(50px); opacity: 0; }
+  }
+  
+  /* Controles de la tragamonedas */
+  .slot-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .balance-display, 
+  .bet-display {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .balance-amount,
+  .bet-amount {
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  
+  .bet-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .bet-display {
+    flex: 1;
+  }
+  
+  .bet-button {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+  
+  .bet-button:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+  }
+  
+  .bet-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .action-buttons {
+    grid-column: span 2;
+    display: flex;
+    gap: var(--spacing-md);
+  }
+  
+  .spin-button,
+  .autoplay-button,
+  .add-credits {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+  
+  .spin-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+  
+  .spin-button:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+  
+  .autoplay-button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+  }
+  
+  .autoplay-button:hover:not(:disabled) {
+    background-color: var(--secondary-dark);
+    transform: translateY(-3px);
+  }
+  
+  .autoplay-button.active {
+    background-color: #f44336;
+  }
+  
+  .autoplay-button.active:hover:not(:disabled) {
+    background-color: #d32f2f;
+  }
+  
+  .spin-button:disabled,
+  .autoplay-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .add-credits {
+    grid-column: span 2;
+    background-color: #4caf50;
+    color: var(--white);
+  }
+  
+  .add-credits:hover {
+    background-color: #388e3c;
+    transform: translateY(-3px);
+  }
+  
+  /* Tabla de pagos */
+  .slot-info {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+  }
+  
+  .slot-info h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+  }
+  
+  .paytable {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+  
+  .paytable-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .paytable-row:last-child {
+    border-bottom: none;
+  }
+  
+  .paytable-value {
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  
+  /* Responsive */
+  @media (max-width: 550px) {
+    .slot-controls {
+      grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+      grid-column: span 1;
+    }
+    
+    .add-credits {
+      grid-column: span 1;
+    }
+    
+    .paytable {
+      font-size: var(--font-size-sm);
+    }
+  }
