@@ -1,0 +1,183 @@
+:root {
+    /* Colores principales */
+    --primary-color: #ff9800;
+    --primary-dark: #e68900;
+    --primary-light: #ffb74d;
+    
+    /* Colores secundarios */
+    --secondary-color: #0066cc;
+    --secondary-dark: #004a99;
+    --secondary-light: #4d94ff;
+    
+    /* Colores neutros */
+    --dark-color: #1e1e1e;
+    --light-color: #f4f4f4;
+    --white: #ffffff;
+    --black: #000000;
+    
+    /* Colores de texto */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light: #ffffff;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.2);
+    
+    /* Bordes */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    
+    /* Espaciado */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Fuentes */
+    --font-family: 'Poppins', Arial, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+  
+  /* Tema oscuro */
+  .dark-theme {
+    --primary-color: #ffa726;
+    --primary-dark: #ff9100;
+    --primary-light: #ffb74d;
+    
+    --secondary-color: #29b6f6;
+    --secondary-dark: #0288d1;
+    --secondary-light: #4fc3f7;
+    
+    --dark-color: #121212;
+    --light-color: #1e1e1e;
+    
+    --text-primary: #e0e0e0;
+    --text-secondary: #bdbdbd;
+    
+    background-color: var(--dark-color);
+    color: var(--text-primary);
+  }
+  
+  /* Estilos generales */
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--light-color);
+    color: var(--text-primary);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  button, .btn {
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all var(--transition-fast);
+  }
+  
+  /* Clases de utilidad */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+  }
+  
+  .card {
+    background: var(--white);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  
+  .dark-theme .card {
+    background: var(--light-color);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    :root {
+      --font-size-xxl: 1.8rem;
+      --font-size-xl: 1.3rem;
+    }
+    
+    .container {
+      padding: 0 var(--spacing-sm);
+    }
+  }

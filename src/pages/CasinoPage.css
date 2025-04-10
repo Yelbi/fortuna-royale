@@ -1,75 +1,162 @@
 /* Estilos generales de la página del Casino */
 .casino-page {
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
   }
   
-  /* Sección Hero para ambientar la página */
-  .casino-hero {
+  /* Filtros de categoría */
+  .categoria-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    justify-content: center;
+  }
+  
+  .filtro-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+  
+  .filtro-btn:hover {
+    background-color: rgba(255, 152, 0, 0.1);
+  }
+  
+  .filtro-btn.activo {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+  
+  /* Mensaje cuando no hay juegos */
+  .no-juegos {
     text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #ff9800, #e68900);
-    color: #fff;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    padding: var(--spacing-lg);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-md);
   }
   
-  .casino-hero h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+  .no-juegos p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
   }
   
-  .casino-hero p {
-    font-size: 1.2rem;
-  }
-  
-  /* Sección de juegos */
-  .casino-games {
-    margin-top: 20px;
-  }
-  
-  /* Distribución en Grid para las tarjetas de juego */
+  /* Grid para las tarjetas de juego */
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
   }
   
-  /* Estilos para cada tarjeta */
-  .card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+  /* Promoción del casino */
+  .casino-promo {
+    margin: var(--spacing-xl) 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.4s;
   }
   
-  .card h3 {
-    margin-bottom: 10px;
-    color: #ff9800;
-    font-size: 1.4rem;
+  .promo-card {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
   }
   
-  .card p {
-    font-size: 1rem;
-    line-height: 1.5;
+  .promo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.2;
   }
   
-  /* Efecto hover para las tarjetas */
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  .promo-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .promo-content h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .promo-content p {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  
+  .promo-content .btn-primary {
+    background-color: var(--white);
+    color: #6a11cb;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    transition: all var(--transition-normal);
+  }
+  
+  .promo-content .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Animación para las secciones */
+  .section {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   /* Responsividad */
   @media (max-width: 768px) {
-    .casino-hero h2 {
-      font-size: 1.8rem;
+    .categoria-filtros {
+      flex-direction: row;
+      justify-content: center;
+      overflow-x: auto;
+      padding-bottom: var(--spacing-xs);
     }
     
-    .casino-hero p {
-      font-size: 1rem;
+    .filtro-btn {
+      flex: 0 0 auto;
+      font-size: var(--font-size-sm);
     }
-  }  
+    
+    .cards-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .promo-content h3 {
+      font-size: var(--font-size-lg);
+    }
+    
+    .promo-content p {
+      font-size: var(--font-size-sm);
+    }
+  }
